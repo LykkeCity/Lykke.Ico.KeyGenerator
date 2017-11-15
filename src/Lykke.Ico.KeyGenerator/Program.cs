@@ -29,7 +29,7 @@ namespace Lykke.Ico.KeyGenerator
             catch (ArgumentException aex)
             {
                 Console.WriteLine("Error: " + aex.Message);
-                Console.WriteLine("Usage: Lykke.Ico.KeyGenerator -n <Number of key pairs to generate> [-p <Path to public keys file>] [-s <Path to secret keys file>] [-a] [-net <Name of BTC net>]");
+                Console.WriteLine("Usage: Lykke.Ico.KeyGenerator -n <Number of key pairs to generate> [-p <Path to public keys file>] [-s <Path to secret keys file>] [-net <Name of BTC net>] [-a] [-h]");
                 return 1;
             }
 
