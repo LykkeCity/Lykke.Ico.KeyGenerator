@@ -36,12 +36,11 @@ Optional. If specified then addresses are generated in addition to public and pr
 #### `-h`
 Optional. If specified then headers are writed into generated CSV files. By default headers are omitted.
 
-#### `-e <Entropy>`
-Optional. Additional entropy for RNG.
-
 Default columns order is: 
 - For public keys file: [btcAddress]; btcPublic; [ethAddress]; ethPublic;
 - For secret keys file: [btcAddress]; btcPublic; btcPrivate; [ethAddress]; ethPublic; ethPrivate;
 
 Addresses are optional and are writed only if `-a` argument is specified.
 
+#### `-e <Entropy>`
+Optional. Additional entropy for RNG.
