@@ -15,6 +15,7 @@ namespace Lykke.Ico.KeyGenerator
         public const string addressArg = "-a";
         public const string headersArg = "-h";
         public const string netArg = "-net";
+        public const string entropyArg = "-e";
         public const string defaultPublicKeysPath = "public.csv";
         public const string defaultSecretKeysPath = "secret.csv";
 
@@ -29,7 +30,7 @@ namespace Lykke.Ico.KeyGenerator
             catch (ArgumentException aex)
             {
                 Console.WriteLine("Error: " + aex.Message);
-                Console.WriteLine("Usage: Lykke.Ico.KeyGenerator -n <Number of key pairs to generate> [-p <Path to public keys file>] [-s <Path to secret keys file>] [-net <Name of BTC net>] [-a] [-h]");
+                Console.WriteLine("Usage: Lykke.Ico.KeyGenerator -n <Number of key pairs to generate> [-p <Path to public keys file>] [-s <Path to secret keys file>] [-net <Name of BTC net>] [-a] [-h] [-e <Entropy>]");
                 return 1;
             }
 
@@ -45,6 +46,11 @@ namespace Lykke.Ico.KeyGenerator
             if (File.Exists(secretKeysPath))
             {
                 File.Delete(secretKeysPath);
+            }
+
+            if (!string.IsNullOrWhiteSpace(arguments.Entropy))
+            {
+                NBitcoin.RandomUtils.AddEntropy(arguments.Entropy);
             }
 
             using (var publicWriter = new StreamWriter(File.OpenWrite(publicKeysPath)))
@@ -132,6 +138,8 @@ namespace Lykke.Ico.KeyGenerator
                 arguments.BitcoinNetwork = NBitcoin.Network.GetNetwork(net) ?? NBitcoin.Network.Main;
             }
 
+            arguments.Entropy = GetArgument(args, entropyArg);
+
             return arguments;
         }
 
@@ -162,5 +170,6 @@ namespace Lykke.Ico.KeyGenerator
         public NBitcoin.Network BitcoinNetwork { get; set; } = NBitcoin.Network.Main;
         public bool WriteAddress { get; set; }
         public bool WriteHeaders { get; set; }
+        public string Entropy { get; set; }
     }
 }

@@ -4,8 +4,13 @@ CLI tool to generate BTC and ETH key pairs and addresses. Generates a couple of 
 ## Building
 Utility is written with .NET Core and can be built for multiple platforms:
 
-    dotnet publish -c Release -r win10-x64
-    dotnet publish -c Release -r osx.10.12-x64
+    src\Lykke.Ico.KeyGenerator> dotnet publish -c Release -r win10-x64
+    src\Lykke.Ico.KeyGenerator> dotnet publish -c Release -r osx.10.12-x64
+
+Those commands generate output for corresponding platforms which contain all required binaries:
+
+    src\Lykke.Ico.KeyGenerator\bin\Release\netcoreapp2.0\win10-x64\
+    src\Lykke.Ico.KeyGenerator\bin\Release\netcoreapp2.0\osx.10.12-x64\
 
 ## Usage
     Lykke.Ico.KeyGenerator -n <Number of key pairs to generate> [-p <Path to public keys file>] [-s <Path to secret keys file>] [-net <Name of BTC net>] [-a] [-h]
@@ -30,6 +35,9 @@ Optional. If specified then addresses are generated in addition to public and pr
 
 #### `-h`
 Optional. If specified then headers are writed into generated CSV files. By default headers are omitted.
+
+#### `-e <Entropy>`
+Optional. Additional entropy for RNG.
 
 Default columns order is: 
 - For public keys file: [btcAddress]; btcPublic; [ethAddress]; ethPublic;
