@@ -40,7 +40,7 @@ Default columns order is:
 - For public keys file: [btcAddress]; btcPublic; [ethAddress]; ethPublic;
 - For secret keys file: [btcAddress]; btcPublic; btcPrivate; [ethAddress]; ethPublic; ethPrivate;
 
-Addresses are optional and are writed only if `-a` argument is specified.
+Addresses are optional and are written only if `-a` argument is specified.
 
 #### `-e <Entropy>`
-Optional. Additional entropy for RNG.
+Optional. Additional entropy for RNG. Quote value if special symbols (not A-Z|a-z|0-9) are used. 
